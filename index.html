@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffcc00, #ff6600);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        #sensor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px dashed black;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        #controls {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid black;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .circle.collision {
+    animation: collisionEffect 0.3s ease;
+}
+
+@keyframes collisionEffect {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div id="sensor"></div>
+    <div id="controls">
+        <label for="numBalls">Number of Balls:</label>
+        <input type="number" id="numBalls" value="5"><br>
+
+        <label for="ballRadius">Ball Radius:</label>
+        <input type="number" id="ballRadius" value="25"><br>
+
+        <button id="startSimulation">Start Simulation</button>
+        <button id="pauseSimulation">Pause Simulation</button>
+        <button id="endSimulation">End Simulation</button>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="circle.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
